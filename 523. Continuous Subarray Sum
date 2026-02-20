@@ -1,0 +1,21 @@
+class Solution {
+    public boolean checkSubarraySum(int[] nums, int k) {
+        Map<Integer,Integer> reminderIndex = new HashMap<>();
+        int sum=0;
+        reminderIndex.put(0,-1);
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            int reminder=sum%k;
+            if(reminderIndex.containsKey(reminder)){
+                if(i-reminderIndex.get(reminder)>1){
+                    return true;
+                }
+            }
+            else{
+                reminderIndex.put(reminder,i);
+            } 
+           
+     }
+     return false;
+    }
+}
