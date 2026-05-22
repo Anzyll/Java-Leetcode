@@ -1,0 +1,20 @@
+import java.util.*;
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> freq = new HashMap<>();
+        for(String word : strs){
+            int[] count = new int[26];
+            for(char c : word.toCharArray()){
+                count[c - 'a']++;
+            }
+        StringBuilder key = new StringBuilder();
+
+        for(int num : count){
+            key.append(num).append('#');
+        }
+        freq.putIfAbsent(key.toString(),new ArrayList<>());
+        freq.get(key.toString()).add(word);
+        }
+        return new ArrayList<>(freq.values());
+    }
+}
