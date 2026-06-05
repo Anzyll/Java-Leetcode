@@ -1,0 +1,15 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(result,new ArrayList<>(),nums,0);
+        return result;
+    }
+    public void backtrack(List<List<Integer>> resultSet,List<Integer> tempset,int[] nums,int start){
+        resultSet.add(new ArrayList<>(tempset));
+        for(int i=start;i<nums.length;i++){
+            tempset.add(nums[i]);
+            backtrack(resultSet,tempset,nums,i+1);
+            tempset.remove(tempset.size()-1);
+        }
+    }
+}
